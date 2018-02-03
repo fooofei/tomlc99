@@ -181,7 +181,7 @@ int main(int argc, const char* argv[])
         io_fopen(&fp, argv[i], "r");
 	    if (!fp) {
 		fprintf(stderr, "ERROR: cannot open %s\n",
-			argv[i], );
+			argv[i]);
 		exit(1);
 	    }
 	    cat(fp);
