@@ -167,6 +167,7 @@ static void cat(FILE* fp)
     toml_free(tab);
 }
 
+extern int io_fopen(FILE ** f, const char * name, const char * mode);
 
 int main(int argc, const char* argv[])
 {
@@ -176,10 +177,11 @@ int main(int argc, const char* argv[])
     } else {
 	for (i = 1; i < argc; i++) {
 	    
-	    FILE* fp = fopen(argv[i], "r");
+        FILE* fp = 0;
+        io_fopen(&fp, argv[i], "r");
 	    if (!fp) {
-		fprintf(stderr, "ERROR: cannot open %s: %s\n",
-			argv[i], strerror(errno));
+		fprintf(stderr, "ERROR: cannot open %s\n",
+			argv[i], );
 		exit(1);
 	    }
 	    cat(fp);
